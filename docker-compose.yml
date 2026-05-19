@@ -26,7 +26,7 @@ services:
       - "logs:/opt/sonarqube/logs"
       - "data:/opt/sonarqube/data"
   db:
-    image: postgres:12
+    image: postgres:17
     container_name: postgresql_creedengo_ios
     networks:
       - sonarnet
@@ -36,7 +36,7 @@ services:
       POSTGRES_USER: sonar
       POSTGRES_PASSWORD: sonar
       POSTGRES_DB: sonarqube
-      PGDATA: pg_data:/var/lib/postgresql/data/pgdata
+      PGDATA: /var/lib/postgresql/data/pgdata
     healthcheck:
       test: [ "CMD-SHELL", "pg_isready -U sonar -d sonarqube" ]
       interval: 5s
